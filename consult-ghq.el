@@ -26,7 +26,7 @@
 
 ;; This packaage provides qhq interface using Consult.
 ;;
-;; Its main entry points are the commands `consult-ghq' and
+;; Its main entry points are the commands `consult-ghq-find' and
 ;; `consult-ghq-grep`.  Default find-function is affe-find.  If you
 ;; want to use consult-find instead, you can change like bellow:
 ;;
@@ -76,7 +76,7 @@
       (reverse paths))))
 
 ;;;###autoload
-(defun consult-ghq ()
+(defun consult-ghq-find ()
   "Find file from selected repo using ghq."
   (interactive)
   (let* ((repo (consult--read (consult-ghq--list-candidates) :prompt "Repo: "))

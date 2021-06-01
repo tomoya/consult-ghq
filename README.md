@@ -4,7 +4,7 @@
 
 This packaage provides these commands.
 
-### consult-ghq
+### consult-ghq-find
 
 Select a repository from the [ghq](https://github.com/x-motemen/ghq) list and then find repository files using [affe-find](https://github.com/minad/affe) (similar to consult-find).
 
