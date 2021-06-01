@@ -53,6 +53,11 @@
   :type 'function
   :group 'consult-ghq)
 
+(defcustom consult-ghq-grep-function #'affe-grep
+  "Grep function that find files after selected repo."
+  :type 'function
+  :group 'consult-ghq)
+
 (defun consult-ghq--list-candidates ()
   "Return ghq list candidate."
   (with-temp-buffer
@@ -77,6 +82,14 @@
   (let* ((repo (consult--read (consult-ghq--list-candidates) :prompt "Repo: "))
         (default-directory repo))
     (funcall consult-ghq-find-function repo)))
+
+;;;###autoload
+(defun consult-ghq-grep ()
+  "Grep from selected repo using ghq."
+  (interactive)
+  (let* ((repo (consult--read (consult-ghq--list-candidates) :prompt "Repo: "))
+        (default-directory repo))
+    (funcall consult-ghq-grep-function repo)))
 
 (provide 'consult-ghq)
 
