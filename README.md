@@ -1,4 +1,4 @@
-# consult-ghq - Ghq interface using consult
+# consult-ghq: Ghq interface using consult
 
 ## Command
 
