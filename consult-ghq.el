@@ -69,7 +69,8 @@
 (defun consult-ghq ()
   "Find file from selected repo using ghq."
   (interactive)
-  (let ((repo (consult--read (consult-ghq--list-candidates) :prompt "Find repo: ")))
+  (let* ((repo (consult--read (consult-ghq--list-candidates) :prompt "Find repo: "))
+        (default-directory repo))
     (funcall consult-ghq-find-function repo)))
 
 (provide 'consult-ghq)
