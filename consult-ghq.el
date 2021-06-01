@@ -43,6 +43,11 @@
   :type 'string
   :group 'consult-ghq)
 
+(defcustom consult-ghq-find-function #'consult-find
+  "Find function that find files after selected repo."
+  :type 'function
+  :group 'consult-ghq)
+
 (defun consult-ghq--list-candidates ()
   "Return ghq list candidate."
   (with-temp-buffer
@@ -65,7 +70,7 @@
   "Find file from selected repo using ghq."
   (interactive)
   (let ((repo (consult--read (consult-ghq--list-candidates) :prompt "Find repo: ")))
-    (consult-find repo)))
+    (funcall consult-ghq-find-function repo)))
 
 (provide 'consult-ghq)
 
