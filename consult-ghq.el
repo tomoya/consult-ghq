@@ -3,10 +3,10 @@
 ;; Copyright (C) 2021 Tomoya Otake
 
 ;; Author: Tomoya Otake <tomoya.ton@gmail.com>
-;; Version: 0.0.1
+;; Version: 0.0.2
 ;; Homepage: https://github.com/tomoya/consult-ghq
 ;; Keywords: convenience, usability, consult, ghq
-;; Package-Requires: ((emacs "26.1") (consult "0.8"))
+;; Package-Requires: ((emacs "26.1") (consult "0.8") (affe "0.1"))
 ;; License: GPL-3.0-or-later
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -26,11 +26,16 @@
 
 ;; This packaage provides qhq interface using Consult.
 ;;
-;; Its main entry points are the commands `consult-ghq'.
+;; Its main entry points are the commands `consult-ghq'.  Default
+;; find-function is affe-find.  If you want to use consult-find
+;; instead, you can change like bellow:
+;;
+;; (setq consult-ghq-find-function #'consult-find)
 
 ;;; Code:
 
 (require 'consult)
+(require 'affe)
 
 (defgroup consult-ghq nil
   "Ghq interface using consult."
@@ -41,6 +46,11 @@
   "ghq"
   "*A ghq command."
   :type 'string
+  :group 'consult-ghq)
+
+(defcustom consult-ghq-find-function #'affe-find
+  "Find function that find files after selected repo."
+  :type 'function
   :group 'consult-ghq)
 
 (defun consult-ghq--list-candidates ()
@@ -64,8 +74,9 @@
 (defun consult-ghq ()
   "Find file from selected repo using ghq."
   (interactive)
-  (let ((repo (consult--read (consult-ghq--list-candidates) :prompt "Find repo: ")))
-    (consult-find repo)))
+  (let* ((repo (consult--read (consult-ghq--list-candidates) :prompt "Repo: "))
+        (default-directory repo))
+    (funcall consult-ghq-find-function repo)))
 
 (provide 'consult-ghq)
 
