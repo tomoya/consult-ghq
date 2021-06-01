@@ -80,7 +80,7 @@
   "Find file from selected repo using ghq."
   (interactive)
   (let* ((repo (consult--read (consult-ghq--list-candidates) :prompt "Repo: "))
-        (default-directory repo))
+         (default-directory repo))
     (funcall consult-ghq-find-function repo)))
 
 ;;;###autoload
@@ -88,7 +88,7 @@
   "Grep from selected repo using ghq."
   (interactive)
   (let* ((repo (consult--read (consult-ghq--list-candidates) :prompt "Repo: "))
-        (default-directory repo))
+         (default-directory repo))
     (funcall consult-ghq-grep-function repo)))
 
 (provide 'consult-ghq)
