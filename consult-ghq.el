@@ -73,7 +73,7 @@
           (line-beginning-position) (line-end-position))
          paths)
         (forward-line 1))
-      (reverse paths))))
+      (nreverse paths))))
 
 ;;;###autoload
 (defun consult-ghq-find ()
