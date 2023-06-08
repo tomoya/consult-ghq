@@ -25,3 +25,13 @@ Also, you can change grep function like bellow:
 ```elisp
 (setq consult-ghq-grep-function #'consult-grep)
 ```
+
+### consult-ghq-switch-project
+
+Select a project from the ghq list and then switch to it via project.el (default) or projectile
+
+You can change switch project function like below:
+
+```elisp
+(setq consult-ghq-switch-project-function #'projectile-switch-project)
+```
