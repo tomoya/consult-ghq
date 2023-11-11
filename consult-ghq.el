@@ -58,6 +58,11 @@
   :type 'function
   :group 'consult-ghq)
 
+(defcustom consult-ghq-switch-project-function #'project-switch-project
+  "Switch project function that opens a project in that project manager."
+  :type 'function
+  :group 'consult-ghq)
+
 (defun consult-ghq--list-candidates ()
   "Return ghq list candidate."
   (with-temp-buffer
@@ -90,6 +95,13 @@
   (let* ((repo (consult--read (consult-ghq--list-candidates) :prompt "Repo: "))
          (default-directory repo))
     (funcall consult-ghq-grep-function repo)))
+
+;;;###autoload
+(defun consult-ghq-switch-project ()
+  "Switch project from ghq."
+  (interactive)
+  (let ((repo (consult--read (consult-ghq--list-candidates) :prompt "Repo: ")))
+    (funcall consult-ghq-switch-project-function repo)))
 
 (provide 'consult-ghq)
 
