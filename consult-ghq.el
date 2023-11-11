@@ -6,7 +6,7 @@
 ;; Version: 0.0.4
 ;; Homepage: https://github.com/tomoya/consult-ghq
 ;; Keywords: convenience, usability, consult, ghq
-;; Package-Requires: ((emacs "26.1") (consult "0.8") (affe "0.1"))
+;; Package-Requires: ((emacs "26.1") (consult "0.8"))
 ;; License: GPL-3.0-or-later
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -27,15 +27,15 @@
 ;; This packaage provides ghq interface using Consult.
 ;;
 ;; Its main entry points are the commands `consult-ghq-find' and
-;; `consult-ghq-grep`.  Default find-function is affe-find.  If you
-;; want to use consult-find instead, you can change like below:
+;; `consult-ghq-grep`.  Default find-function is affe-find, if it's
+;; installed, otherwise consult-find.  If you want to use consult-find
+;; despite having affe installed, you can change like below:
 ;;
 ;; (setq consult-ghq-find-function #'consult-find)
 
 ;;; Code:
 
 (require 'consult)
-(require 'affe)
 
 (defgroup consult-ghq nil
   "Ghq interface using consult."
@@ -48,12 +48,16 @@
   :type 'string
   :group 'consult-ghq)
 
-(defcustom consult-ghq-find-function #'affe-find
+(defcustom consult-ghq-find-function (if (fboundp 'affe-find)
+                                         #'affe-find
+                                       #'consult-find)
   "Find function that find files after selected repo."
   :type 'function
   :group 'consult-ghq)
 
-(defcustom consult-ghq-grep-function #'affe-grep
+(defcustom consult-ghq-grep-function (if (fboundp 'affe-grep)
+                                         #'affe-grep
+                                       #'consult-grep)
   "Grep function that find files after selected repo."
   :type 'function
   :group 'consult-ghq)
