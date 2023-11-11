@@ -10,7 +10,7 @@ This packaage provides these commands.
 
 Select a repository from the [ghq](https://github.com/x-motemen/ghq) list and then find repository files using [affe-find](https://github.com/minad/affe) (similar to consult-find).
 
-If you want to use consult-find instead, you can change like bellow:
+If you want to use consult-find instead, you can change like below:
 
 ```elisp
 (setq consult-ghq-find-function #'consult-find)
@@ -20,7 +20,7 @@ If you want to use consult-find instead, you can change like bellow:
 
 Select a repository from the ghq list and then grep repository files using affe-grep (similar to consult-ripgrep or consult-grep).
 
-Also, you can change grep function like bellow:
+Also, you can change grep function like below:
 
 ```elisp
 (setq consult-ghq-grep-function #'consult-grep)
