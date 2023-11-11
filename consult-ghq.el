@@ -3,7 +3,7 @@
 ;; Copyright (C) 2021 Tomoya Otake
 
 ;; Author: Tomoya Otake <tomoya.ton@gmail.com>
-;; Version: 0.0.4
+;; Version: 0.0.5
 ;; Homepage: https://github.com/tomoya/consult-ghq
 ;; Keywords: convenience, usability, consult, ghq
 ;; Package-Requires: ((emacs "26.1") (consult "0.8"))
