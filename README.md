@@ -4,7 +4,7 @@ https://user-images.githubusercontent.com/18009/120468941-b8779c00-c3dc-11eb-872
 
 ## Commands
 
-This packaage provides these commands.
+This package provides these commands.
 
 ### consult-ghq-find
 
